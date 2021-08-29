@@ -14,6 +14,9 @@ struct FavoritesView: View {
 
             }
             .navigationTitle("Favorites")
+            .onAppear() {
+                Log.v("Favorites appear")
+            }
         }
     }
 }

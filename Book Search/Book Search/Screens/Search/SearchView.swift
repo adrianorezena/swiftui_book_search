@@ -10,6 +10,7 @@ import SwiftUI
 struct SearchView: View {
     
     @State private var searchText = ""
+    @ObservedObject var viewModel = SearchViewModel()
     
     var body: some View {
         NavigationView {
@@ -21,6 +22,7 @@ struct SearchView: View {
                         .cornerRadius(5)
                     
                     Button(action: {
+                        viewModel.fetchBooks(expression: searchText)
                     }) {
                         Image(systemName: "magnifyingglass")
                     }
@@ -30,6 +32,12 @@ struct SearchView: View {
                     .cornerRadius(5)
                 }
                 .padding()
+                
+                if viewModel.isSearching {
+                    ProgressView()
+                } else {
+                    BookList(books: viewModel.books)
+                }
 
                 Spacer()
             }
