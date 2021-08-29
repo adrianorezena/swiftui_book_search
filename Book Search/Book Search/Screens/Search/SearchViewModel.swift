@@ -12,10 +12,13 @@ class SearchViewModel: ObservableObject {
     
     @Published var books = [Book]()
     @Published var isSearching: Bool = false
+    @Published var searchError: Bool = false
     
     private let searchRepository = SearchRepository()
     
     func fetchBooks(expression: String) {
+        searchError = false
+        
         let trimmedExpression = expression.trimmingCharacters(in: .whitespacesAndNewlines)
         guard trimmedExpression.count > 0  else {
             books.removeAll()
@@ -23,10 +26,20 @@ class SearchViewModel: ObservableObject {
         }
         
         Log.viewModel("> expression: \(expression)")
-        searchRepository.fetchBooks(expression: trimmedExpression) { books in
-            Log.viewModel("< books: \(books)")
-            self.books = books
+        searchRepository.fetchBooks(expression: trimmedExpression) { response in
             self.isSearching = false
+            
+            switch response {
+            case .success(let books):
+                let fetchedBooks = books ?? []
+                Log.viewModel("< books: \(fetchedBooks)")
+                self.books = fetchedBooks
+                
+            case .failure(let error):
+                Log.viewModel("Error fetching: \(error.localizedDescription)")
+                self.searchError = true
+                
+            }
         }
         
         isSearching = true

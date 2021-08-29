@@ -38,13 +38,19 @@ struct SearchView: View {
                 if viewModel.isSearching {
                     ProgressView()
                 } else {
-                    BookList(
-                        books: viewModel.books,
-                        favoriteBookIDs: favoritedViewModel.favoriteBookIDs,
-                        likeAction: onFavoriteButton()
-                    ).simultaneousGesture(DragGesture().onChanged({ _ in
-                        UIApplication.shared.windows.forEach { $0.endEditing(true) }
-                    }))
+                    if viewModel.searchError {
+                        Text("Search error.\nPlease verify your internet connection.")
+                            .font(.caption)
+                            .multilineTextAlignment(.center)
+                    } else {
+                        BookList(
+                            books: viewModel.books,
+                            favoriteBookIDs: favoritedViewModel.favoriteBookIDs,
+                            likeAction: onFavoriteButton()
+                        ).simultaneousGesture(DragGesture().onChanged({ _ in
+                            UIApplication.shared.windows.forEach { $0.endEditing(true) }
+                        }))
+                    }
                 }
 
                 Spacer()

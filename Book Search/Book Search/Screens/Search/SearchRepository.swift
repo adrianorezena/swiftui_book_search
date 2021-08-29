@@ -10,6 +10,12 @@ import Foundation
 
 struct SearchRepository {
     
+    enum SearchRepositoryResponse {
+        case success([Book]?)
+        case failure(Error)
+    }
+
+    
     private let searchAPI = SearchAPI()
     
     
@@ -17,7 +23,7 @@ struct SearchRepository {
     /// - parameter expression: expression
     /// - parameter onComplete: completion block with the response
     // Returns an array of Books
-    func fetchBooks(expression: String, onComplete: @escaping (_ books: [Book]) -> Void) {
+    func fetchBooks(expression: String, onComplete: @escaping (_ result: SearchRepositoryResponse) -> Void) {
         
         Log.repository("> expression: \(expression)")
         searchAPI.fetchBooks(expression: expression) { response in
@@ -30,19 +36,20 @@ struct SearchRepository {
                         let decoded = try JSONDecoder().decode(Search.self, from: data)
                         Log.repository("< response decoded: \(decoded)")
                         
-                        onComplete(decoded.docs ?? [])
+                        onComplete(.success(decoded.docs ?? []))
                         return
                     } catch {
                         Log.e("An error occurred while trying to parse the Search results: \(error.localizedDescription)")
                     }
                 }
                 
-                onComplete([])
+                onComplete(.success([]))
                 
                 
             case .failure(let error):
-                Log.e("An error occurred in the searchAPI request: \(error.localizedDescription)")
-                onComplete([])
+                let nsError = error as NSError
+                Log.e("An error occurred in the searchAPI request. Code: \(nsError.code). Message: \(error.localizedDescription)")
+                onComplete(.failure(error))
             }
         }
         
