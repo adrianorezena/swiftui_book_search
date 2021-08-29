@@ -42,7 +42,9 @@ struct SearchView: View {
                         books: viewModel.books,
                         favoriteBookIDs: favoritedViewModel.favoriteBookIDs,
                         likeAction: onFavoriteButton()
-                    )
+                    ).simultaneousGesture(DragGesture().onChanged({ _ in
+                        UIApplication.shared.windows.forEach { $0.endEditing(true) }
+                    }))
                 }
 
                 Spacer()
