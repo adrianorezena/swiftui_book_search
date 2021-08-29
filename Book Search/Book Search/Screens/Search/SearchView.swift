@@ -8,8 +8,33 @@
 import SwiftUI
 
 struct SearchView: View {
+    
+    @State private var searchText = ""
+    
     var body: some View {
-        Text("Search")
+        NavigationView {
+            VStack {
+                HStack {
+                    TextField("Search", text: $searchText)
+                        .padding(.all, 9)
+                        .background(Color.init(white: 0.95))
+                        .cornerRadius(5)
+                    
+                    Button(action: {
+                    }) {
+                        Image(systemName: "magnifyingglass")
+                    }
+                    .accentColor(.white)
+                    .frame(width: 40, height: 40, alignment: .center)
+                    .background(Color.blue)
+                    .cornerRadius(5)
+                }
+                .padding()
+
+                Spacer()
+            }
+            .navigationTitle("Books")
+        }
     }
 }
 
