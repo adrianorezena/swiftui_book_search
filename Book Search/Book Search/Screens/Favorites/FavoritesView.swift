@@ -8,17 +8,35 @@
 import SwiftUI
 
 struct FavoritesView: View {
+    
+    @ObservedObject var viewModel = FavoritesViewModel()
+
     var body: some View {
         NavigationView {
             VStack {
-
+                BookList(
+                    books: viewModel.books,
+                    favoriteBookIDs: viewModel.favoriteBookIDs,
+                    likeAction: onFavoriteButton()
+                )
             }
             .navigationTitle("Favorites")
             .onAppear() {
-                Log.v("Favorites appear")
+                viewModel.fetchFavorites()
             }
         }
     }
+    
+    
+    func onFavoriteButton() -> LikeButtonPressed {
+        return { book in
+            self.viewModel.addOrRemoveFavorite(book) {
+                self.viewModel.fetchFavorites()
+            }
+        }
+    }
+    
+    
 }
 
 struct FavoritesView_Previews: PreviewProvider {

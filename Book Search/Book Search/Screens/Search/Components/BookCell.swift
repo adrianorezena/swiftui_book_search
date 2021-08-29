@@ -11,6 +11,8 @@ import SwiftUI
 struct BookCell: View {
     
     var book: Book
+    @State var isFavorite: Bool = false
+    let likeAction: LikeButtonPressed
     
     var body: some View {
         HStack {
@@ -36,7 +38,15 @@ struct BookCell: View {
             
             Spacer()
 
-            //AsyncImageLikeButton(repository: favoritesRepository, book: book)
+            LikeButton(isFavorite: isFavorite, likeAction: addRemoveFavorite())
         }
     }
+    
+    
+    func addRemoveFavorite() -> ButtonPressed {
+        return {
+            likeAction?(book)
+        }
+    }
+    
 }

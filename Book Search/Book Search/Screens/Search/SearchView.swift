@@ -11,6 +11,7 @@ struct SearchView: View {
     
     @State private var searchText = ""
     @ObservedObject var viewModel = SearchViewModel()
+    @ObservedObject var favoritedViewModel = FavoritesViewModel()
     
     var body: some View {
         NavigationView {
@@ -23,6 +24,7 @@ struct SearchView: View {
                     
                     Button(action: {
                         viewModel.fetchBooks(expression: searchText)
+                        favoritedViewModel.fetchFavorites()
                     }) {
                         Image(systemName: "magnifyingglass")
                     }
@@ -36,12 +38,25 @@ struct SearchView: View {
                 if viewModel.isSearching {
                     ProgressView()
                 } else {
-                    BookList(books: viewModel.books)
+                    BookList(
+                        books: viewModel.books,
+                        favoriteBookIDs: favoritedViewModel.favoriteBookIDs,
+                        likeAction: onFavoriteButton()
+                    )
                 }
 
                 Spacer()
             }
             .navigationTitle("Books")
+        }
+    }
+    
+    
+    func onFavoriteButton() -> LikeButtonPressed {
+        return { book in
+            self.favoritedViewModel.addOrRemoveFavorite(book) {
+                self.favoritedViewModel.fetchFavorites()
+            }
         }
     }
 }

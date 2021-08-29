@@ -17,7 +17,10 @@ class SearchViewModel: ObservableObject {
     
     func fetchBooks(expression: String) {
         let trimmedExpression = expression.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard trimmedExpression.count > 0  else { return }
+        guard trimmedExpression.count > 0  else {
+            books.removeAll()
+            return
+        }
         
         Log.viewModel("> expression: \(expression)")
         searchRepository.fetchBooks(expression: trimmedExpression) { books in
