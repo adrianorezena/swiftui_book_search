@@ -21,9 +21,14 @@ class FavoritesViewModel: FavoritesViewModelProtocol {
     @Published var books = [Book]()
     @Published var favoriteBookIDs: [String] = []
     
+    let repository: FavoritesRepositoryProtocol
+    
+    init(repository: FavoritesRepositoryProtocol = FavoritesRepository()) {
+        self.repository = repository
+    }
+    
+    
     func addOrRemoveFavorite(_ book: Book, onComplete: @escaping () -> Void) {
-        let repository = FavoritesRepository()
-        
         guard let key = book.key else {
             onComplete()
             return
@@ -42,18 +47,15 @@ class FavoritesViewModel: FavoritesViewModelProtocol {
     }
     
     func addFavorite(_ book: Book) {
-        let repository = FavoritesRepository()
         repository.addFavorite(book)
     }
     
     func removeFavorite(_ book: Book) {
-        let repository = FavoritesRepository()
         repository.removeFavorite(book)
     }
     
     
     func fetchFavorites() {
-        let repository = FavoritesRepository()
         repository.fetchFavorites { fetchedBooks in
             self.books = fetchedBooks
             self.favoriteBookIDs = fetchedBooks.compactMap({ $0.key })

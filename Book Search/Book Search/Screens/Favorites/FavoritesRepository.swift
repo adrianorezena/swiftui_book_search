@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct FavoritesRepository: CoreDataRepositoryProtocol {
+struct FavoritesRepository: FavoritesRepositoryProtocol, CoreDataRepositoryProtocol {
     
     func addFavorite(_ book: Book) {
         guard let context = CoreDataContextMananger.shared.context else { return }

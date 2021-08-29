@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		808D1DF526DC42C900BE13A0 /* SearchAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808D1DF426DC42C900BE13A0 /* SearchAPIProtocol.swift */; };
+		808D1DF726DC44B400BE13A0 /* SearchRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808D1DF626DC44B400BE13A0 /* SearchRepositoryProtocol.swift */; };
+		808D1DF926DC48F200BE13A0 /* FavoritesViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808D1DF826DC48F200BE13A0 /* FavoritesViewModelProtocol.swift */; };
 		808F4E7E26DBB8910079E76B /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808F4E7D26DBB8910079E76B /* LikeButton.swift */; };
 		80A6D53926DB212500BEEF4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A6D53826DB212500BEEF4C /* AppDelegate.swift */; };
 		80A6D53B26DB212500BEEF4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A6D53A26DB212500BEEF4C /* SceneDelegate.swift */; };
@@ -57,6 +60,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		808D1DF426DC42C900BE13A0 /* SearchAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPIProtocol.swift; sourceTree = "<group>"; };
+		808D1DF626DC44B400BE13A0 /* SearchRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryProtocol.swift; sourceTree = "<group>"; };
+		808D1DF826DC48F200BE13A0 /* FavoritesViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModelProtocol.swift; sourceTree = "<group>"; };
 		808F4E7D26DBB8910079E76B /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		80A6D53526DB212500BEEF4C /* Book Search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Book Search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80A6D53826DB212500BEEF4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -270,7 +276,9 @@
 				80A6D57526DB24FC00BEEF4C /* SearchView.swift */,
 				80A6D57926DB28E300BEEF4C /* SearchViewModel.swift */,
 				80A6D57B26DB296C00BEEF4C /* SearchRepository.swift */,
+				808D1DF626DC44B400BE13A0 /* SearchRepositoryProtocol.swift */,
 				80A6D57F26DB29C300BEEF4C /* SearchAPI.swift */,
+				808D1DF426DC42C900BE13A0 /* SearchAPIProtocol.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -279,8 +287,9 @@
 			isa = PBXGroup;
 			children = (
 				80A6D57726DB251600BEEF4C /* FavoritesView.swift */,
-				80A6D59B26DBA1D000BEEF4C /* FavoritesViewModel.swift */,
 				80A6D59D26DBA30C00BEEF4C /* FavoritesRepository.swift */,
+				80A6D59B26DBA1D000BEEF4C /* FavoritesViewModel.swift */,
+				808D1DF826DC48F200BE13A0 /* FavoritesViewModelProtocol.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -458,6 +467,7 @@
 				80A6D59426DB9F5B00BEEF4C /* AsyncImage.swift in Sources */,
 				80A6D58426DB2A4200BEEF4C /* Log.swift in Sources */,
 				80A6D59126DB9F1000BEEF4C /* BookCell.swift in Sources */,
+				808D1DF526DC42C900BE13A0 /* SearchAPIProtocol.swift in Sources */,
 				80A6D57A26DB28E300BEEF4C /* SearchViewModel.swift in Sources */,
 				80A6D54026DB212500BEEF4C /* Book_Search.xcdatamodeld in Sources */,
 				80A6D5A326DBA65100BEEF4C /* CoreDataRepositoryProtocol.swift in Sources */,
@@ -467,6 +477,7 @@
 				80A6D59A26DB9FC800BEEF4C /* ImageCache.swift in Sources */,
 				80A6D59826DB9FA600BEEF4C /* EnvironmentValues+ImageCache.swift in Sources */,
 				80A6D53926DB212500BEEF4C /* AppDelegate.swift in Sources */,
+				808D1DF926DC48F200BE13A0 /* FavoritesViewModelProtocol.swift in Sources */,
 				80A6D57E26DB29A900BEEF4C /* Book.swift in Sources */,
 				80A6D53B26DB212500BEEF4C /* SceneDelegate.swift in Sources */,
 				80A6D59C26DBA1D000BEEF4C /* FavoritesViewModel.swift in Sources */,
@@ -474,6 +485,7 @@
 				80A6D58A26DB304F00BEEF4C /* APIDefaults.swift in Sources */,
 				80A6D59626DB9F7F00BEEF4C /* ImageLoader.swift in Sources */,
 				80A6D53D26DB212500BEEF4C /* MainView.swift in Sources */,
+				808D1DF726DC44B400BE13A0 /* SearchRepositoryProtocol.swift in Sources */,
 				80A6D57C26DB296C00BEEF4C /* SearchRepository.swift in Sources */,
 				80A6D58C26DB30EE00BEEF4C /* Search.swift in Sources */,
 				80A6D59E26DBA30C00BEEF4C /* FavoritesRepository.swift in Sources */,

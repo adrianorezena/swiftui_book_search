@@ -10,19 +10,23 @@ import Foundation
 
 struct SearchRepository {
     
-    enum SearchRepositoryResponse {
-        case success([Book]?)
-        case failure(Error)
+    //MARK: - Private properties
+    private let searchAPI: SearchAPIProtocol
+    
+    
+    // MARK: - Constructor
+    init(searchAPI: SearchAPIProtocol = SearchAPI()) {
+        self.searchAPI = searchAPI
     }
+    
+}
 
-    
-    private let searchAPI = SearchAPI()
-    
+
+extension SearchRepository: SearchRepositoryProtocol {
     
     /// Search the books in the OpenLibrary API with the desired expression
     /// - parameter expression: expression
     /// - parameter onComplete: completion block with the response
-    // Returns an array of Books
     func fetchBooks(expression: String, onComplete: @escaping (_ result: SearchRepositoryResponse) -> Void) {
         
         Log.repository("> expression: \(expression)")

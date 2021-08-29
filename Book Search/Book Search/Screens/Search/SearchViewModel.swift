@@ -14,11 +14,19 @@ class SearchViewModel: ObservableObject {
     @Published var isSearching: Bool = false
     @Published var searchError: Bool = false
     
-    private let searchRepository = SearchRepository()
+
+    private let searchRepository: SearchRepositoryProtocol
+    
+    
+    // MARK: - Constructor
+    init(searchRepository: SearchRepositoryProtocol = SearchRepository()) {
+        self.searchRepository = searchRepository
+    }
+    
     
     func fetchBooks(expression: String) {
         searchError = false
-        
+         
         let trimmedExpression = expression.trimmingCharacters(in: .whitespacesAndNewlines)
         guard trimmedExpression.count > 0  else {
             books.removeAll()

@@ -11,8 +11,21 @@ import Foundation
 /// class responsible for creating the Search Request that must be sent to the API.
 struct SearchAPI {
     
-    private let networkManager = NetworkManager()
     
+    //MARK: - Private Properties
+    private let networkManager: NetworkManager!
+    
+    
+    //MARK: - Constructor
+    init(networkManager: NetworkManager = NetworkManager()) {
+        self.networkManager = networkManager
+    }
+    
+}
+
+
+//MARK: - SearchAPIProtocol
+extension SearchAPI: SearchAPIProtocol {
     
     /// Search the books in the OpenLibrary API with the desired expression
     /// - parameter expression: expression
