@@ -101,12 +101,14 @@
 		80A6D53726DB212500BEEF4C /* Book Search */ = {
 			isa = PBXGroup;
 			children = (
-				80A6D53826DB212500BEEF4C /* AppDelegate.swift */,
-				80A6D53A26DB212500BEEF4C /* SceneDelegate.swift */,
+				80A6D56B26DB231300BEEF4C /* Delegate */,
+				80A6D57126DB236700BEEF4C /* Helper */,
+				80A6D57026DB236100BEEF4C /* Views */,
+				80A6D56F26DB235C00BEEF4C /* Model */,
+				80A6D56E26DB234E00BEEF4C /* Manager */,
+				80A6D56D26DB234700BEEF4C /* Screens */,
+				80A6D56C26DB232400BEEF4C /* Resources */,
 				80A6D53C26DB212500BEEF4C /* ContentView.swift */,
-				80A6D54126DB212800BEEF4C /* Assets.xcassets */,
-				80A6D54626DB212800BEEF4C /* LaunchScreen.storyboard */,
-				80A6D54926DB212800BEEF4C /* Info.plist */,
 				80A6D53E26DB212500BEEF4C /* Book_Search.xcdatamodeld */,
 				80A6D54326DB212800BEEF4C /* Preview Content */,
 			);
@@ -137,6 +139,60 @@
 				80A6D55F26DB212800BEEF4C /* Info.plist */,
 			);
 			path = "Book SearchUITests";
+			sourceTree = "<group>";
+		};
+		80A6D56B26DB231300BEEF4C /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				80A6D53826DB212500BEEF4C /* AppDelegate.swift */,
+				80A6D53A26DB212500BEEF4C /* SceneDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		80A6D56C26DB232400BEEF4C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				80A6D54926DB212800BEEF4C /* Info.plist */,
+				80A6D54626DB212800BEEF4C /* LaunchScreen.storyboard */,
+				80A6D54126DB212800BEEF4C /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		80A6D56D26DB234700BEEF4C /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		80A6D56E26DB234E00BEEF4C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		80A6D56F26DB235C00BEEF4C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		80A6D57026DB236100BEEF4C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		80A6D57126DB236700BEEF4C /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -444,7 +500,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Book Search/Preview Content\"";
 				DEVELOPMENT_TEAM = 24B9H7Z94K;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Book Search/Info.plist";
+				INFOPLIST_FILE = "Book Search/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -465,7 +521,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Book Search/Preview Content\"";
 				DEVELOPMENT_TEAM = 24B9H7Z94K;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Book Search/Info.plist";
+				INFOPLIST_FILE = "Book Search/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
