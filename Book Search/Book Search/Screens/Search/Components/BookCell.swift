@@ -17,23 +17,34 @@ struct BookCell: View {
     var body: some View {
         HStack {
             let isbn = book.isbn?.first ?? ""
-            let url = URL(string: "https://covers.openlibrary.org/b/isbn/\(isbn)-S.jpg")!
-            AsyncImage(
-                url: url,
-                placeholder: { ProgressView().frame(width: 60, height: 80, alignment: .leading) },
-                image: { Image(uiImage: $0).resizable() }
-            ).frame(width: 60, height: 80, alignment: .leading)
             
-            VStack(alignment: .leading, spacing: 0, content: {
+            if (book.isbn?.count ?? 0) > 0 {
+                let url = URL(string: "https://covers.openlibrary.org/b/isbn/\(isbn)-M.jpg")!
+                AsyncImage(
+                    url: url,
+                    placeholder: { ProgressView().frame(width: 60, height: 80, alignment: .center) },
+                    image: { Image(uiImage: $0).resizable() }
+                ).frame(width: 60, height: 80, alignment: .center)
+            } else {
+                Image("imgBook")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60, height: 80, alignment: .center)
+            }
+            
+            
+            VStack(alignment: .leading, spacing: 2, content: {
                 
                 Text(book.title ?? "")
                     .fontWeight(.heavy)
                 
                 Text(book.author_name?.first ?? "")
                     .font(.caption)
+                    .foregroundColor(Color.gray)
                 
                 Text(String(book.publish_year?.first ?? 0))
                     .font(.caption)
+                    .foregroundColor(Color.gray)
             })
             
             Spacer()
