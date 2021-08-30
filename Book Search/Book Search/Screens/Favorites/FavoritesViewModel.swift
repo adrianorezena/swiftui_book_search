@@ -8,15 +8,7 @@
 import Foundation
 
 
-protocol FavoritesViewModelProtocol: ObservableObject {
-    
-    func addFavorite(_ book: Book)
-    func fetchFavorites()
-    
-}
-
-
-class FavoritesViewModel: FavoritesViewModelProtocol {
+class FavoritesViewModel: ObservableObject {
     
     @Published var books = [Book]()
     @Published var favoriteBookIDs: [String] = []
